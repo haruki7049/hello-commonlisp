@@ -1,2 +1,2 @@
-# hello-commonlisp-web
+# hello-commonlisp
 The hobby commonlisp project for my practice
