@@ -2,7 +2,8 @@
     :version "0.1.0"
     :author "haruki7049"
     :license "MIT"
-    :depends-on ("hello-commonlisp")
+    :depends-on ("hello-commonlisp"
+                 "fiveam")
     :components ((:module "test"
                           :components
                           ((:file "main"))))
