@@ -28,7 +28,7 @@ let
 in
 
 lispDerivation {
-  pname = "hello-commonlisp-web";
+  pname = "hello-commonlisp";
   version = "dev";
   src = lib.cleanSource ./.;
 
