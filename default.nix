@@ -38,7 +38,5 @@ lispDerivation {
 
   lispImpls = [
     sbcl
-    clisp
-    ecl
   ];
 }
