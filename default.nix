@@ -29,7 +29,7 @@ let
     owner = "usocket";
     repo = "usocket";
     rev = "6456a3f7ece05c8b8f077dd079daffb8de122ead";
-    hash = "";
+    hash = "sha256-xZbZnXOyhayXf+CsmktHv6kLAO6X4/dm+tiOqjF6/iw=";
   };
 
   vom = fetchFromGitHub {
