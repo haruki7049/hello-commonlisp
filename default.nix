@@ -18,6 +18,91 @@ let
     hash = "sha256-NOd2W/7zVrsedJ9JyvIYerKCGeiPkGrnBoJOiMOiHVo=";
   };
 
+  cl-plus-ssl = fetchFromGitHub {
+    owner = "cl-plus-ssl";
+    repo = "cl-plus-ssl";
+    rev = "e6963f24a2ad2a8c3fc113697bae54e0f15c05b0";
+    hash = "sha256-IJRWh8Lr7BSWxM2TB071tx6+pYmSAhWmcEDuDxrlN74=";
+  };
+
+  usocket = fetchFromGitHub {
+    owner = "usocket";
+    repo = "usocket";
+    rev = "6456a3f7ece05c8b8f077dd079daffb8de122ead";
+    hash = "";
+  };
+
+  vom = fetchFromGitHub {
+    owner = "orthecreedence";
+    repo = "vom";
+    rev = "303c3f6804040f6b9490d423d87d4ee29ce73ca8";
+    hash = "sha256-JeVHEh5yDOuSVpap1P/i4UC5xH7KsfFNhRfJAZPJ2eY=";
+  };
+
+  trivial-mimes = fetchFromGitHub {
+    owner = "Shinmera";
+    repo = "trivial-mimes";
+    rev = "01cb46b062d6804ce707352e3de593c104f1cdeb";
+    hash = "sha256-ulLRDzeAtc+z2Gxp+sSqLI6mGYU9KxUdnuFp+EREDio=";
+  };
+
+  trivial-utf-8 = fetchFromGitLab {
+    domain = "gitlab.common-lisp.net";
+    repo = "trivial-utf-8";
+    owner = "trivial-utf-8";
+    rev = "41421c98507bfa7dc5623aa997c4245e44dfcd4d";
+    hash = "sha256-hxtF14wX0V0JH1rz1q2dHx+nrH7WEvqzoAzAUKK3UC4=";
+  };
+
+  mgl-pax = fetchFromGitHub {
+    owner = "melisgl";
+    repo = "mgl-pax";
+    rev = "835a033bb067b6c85b76d389342a4c12e27c11ce";
+    hash = "sha256-qqsL0sP8Z33/1nQFYCqzwj7QkwxH3qWny+hjczQ6wWk=";
+  };
+
+  fast-io = fetchFromGitHub {
+    owner = "rpav";
+    repo = "fast-io";
+    rev = "a4c5ad600425842e8b6233b1fa22610ffcd874c3";
+    hash = "sha256-YBTROnJyB8w3H+GDhlHI+6n7XvnyoGN+8lDh9ZQXAHI=";
+  };
+
+  quri = fetchFromGitHub {
+    owner = "fukamachi";
+    repo = "quri";
+    rev = "45e0ff7f15a96ae9aef02b977375c6984d57a608";
+    hash = "sha256-AK54HOWbnBTGWemZJMo84bjOBl4e7azbpy53cd6rOm4=";
+  };
+
+  idna = fetchFromGitHub {
+    owner = "antifuchs";
+    repo = "idna";
+    rev = "bf789e6029b695ecba635964deac38130f55c7b4";
+    hash = "sha256-QpUK5znagLTN4d7GMiAmOiRj1DWhpfdIwBR25+rIywI=";
+  };
+
+  split-sequence = fetchFromGitHub {
+    owner = "sharplispers";
+    repo = "split-sequence";
+    rev = "89a10b4d697f03eb32ade3c373c4fd69800a841a";
+    hash = "sha256-faF2EiQ+xXWHX9JlZ187xR2mWhdOYCpb4EZCPNoZ9uQ=";
+  };
+
+  flexi-streams = fetchFromGitHub {
+    owner = "edicl";
+    repo = "flexi-streams";
+    rev = "4951d575b8f73270802a03cc5812b8310409caa9";
+    hash = "sha256-cCpCBttChCko6+50ancWv6BGX9quPYGrrZpH5zMRYq4=";
+  };
+
+  trivial-gray-streams = fetchFromGitHub {
+    owner = "trivial-gray-streams";
+    repo = "trivial-gray-streams";
+    rev = "a7ead683666849762ea657dac9137d693c5a4929";
+    hash = "sha256-NXMvoSlMC/PyrKS0EVoGdempGZN6z3h0YRr102HBhkc=";
+  };
+
   xsubseq = fetchFromGitHub {
     owner = "fukamachi";
     repo = "xsubseq";
@@ -139,6 +224,11 @@ lispDerivation {
 
   buildInputs = [
     woo
+    idna
+    split-sequence
+    quri
+    flexi-streams
+    trivial-gray-streams
     fast-http
     xsubseq
     smart-buffer
@@ -155,6 +245,13 @@ lispDerivation {
     babel
     trivial-features
     alexandria
+    fast-io
+    trivial-utf-8
+    mgl-pax
+    trivial-mimes
+    vom
+    cl-plus-ssl
+    usocket
   ];
 
   lispImpls = [
