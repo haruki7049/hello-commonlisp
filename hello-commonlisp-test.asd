@@ -4,7 +4,7 @@
     :license "MIT"
     :depends-on ("hello-commonlisp"
                  "fiveam")
-    :components ((:module "test"
+    :components ((:module "t"
                           :components
                           ((:file "main"))))
     :description "The hobby commonlisp project for my practice")
