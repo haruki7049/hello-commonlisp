@@ -25,13 +25,7 @@ let
     hash = "sha256-dg5xWOdR1NuRjgJq6KBwbrNxS2ZKH94JwsXa+va4QIY=";
   };
 
-  alexandria = fetchFromGitLab {
-    domain = "gitlab.common-lisp.net";
-    repo = "alexandria";
-    owner = "alexandria";
-    rev = "8514d8e68ed0c733abf7f96f9e91b24912686dc4";
-    hash = "sha256-vPHp/dXX24zUPF1t7EdBryzqlG33A0fOoD5loFOxAEs=";
-  };
+  alexandria = callPackage ../alexandria { };
 in
 
 lispDerivation {

@@ -9,7 +9,7 @@
   pname ? null,
   version ? null,
   src,
-  lispLibs ? [],
+  lispLibs ? [ ],
   lisps,
   runner,
 }@args:
@@ -63,5 +63,5 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = lispLibs;
 
-  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.lispLibs)}:${args.src}";
+  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.lispLibs or [ ] ++ [ args.src ])}";
 }
