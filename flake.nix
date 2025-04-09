@@ -40,12 +40,12 @@
             ];
 
             lisps = [
-              pkgs.sbcl
+              pkgs.ecl
             ];
 
             doCheck = true;
 
-            runner = pkgs.sbcl;
+            runner = pkgs.ecl;
           };
         in
         {
