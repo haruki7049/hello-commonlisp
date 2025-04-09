@@ -21,12 +21,39 @@
         inputs.treefmt-nix.flakeModule
       ];
 
-      perSystem = { pkgs, ... }: {
-        devShells.default = pkgs.mkShell {
-          nativeBuildInputs = [
-            pkgs.nil
-          ];
+      perSystem = { pkgs, lib, ... }:
+        let
+          lispDerivation = pkgs.callPackage ./nix/lispDerivation { };
+          fiveam = pkgs.callPackage ./nix/fiveam { };
+          hello-commonlisp = lispDerivation {
+            pname = "hello-commonlisp";
+            version = "dev";
+            src = lib.cleanSource ./.;
+
+            lispLibs = [
+              fiveam
+            ];
+
+            lisps = [
+              pkgs.sbcl
+            ];
+
+            doCheck = true;
+
+            runner = pkgs.sbcl;
+          };
+        in
+        {
+          packages = {
+            inherit hello-commonlisp;
+            default = hello-commonlisp;
+          };
+
+          devShells.default = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.nil
+            ];
+          };
         };
-      };
     };
 }
