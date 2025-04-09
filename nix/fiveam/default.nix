@@ -11,13 +11,6 @@
 }:
 
 let
-  asdf-flv = fetchFromGitHub {
-    owner = "didierverna";
-    repo = "asdf-flv";
-    rev = "3f1de416f7f40a39c47f08335c710a884ece36b3";
-    hash = "sha256-XKMv04SNF7brzLReTSe9GJBaLJITDYUPyF41TRuUbOs=";
-  };
-
   trivial-backtrace = fetchFromGitHub {
     owner = "hraban";
     repo = "trivial-backtrace";
@@ -25,6 +18,7 @@ let
     hash = "sha256-dg5xWOdR1NuRjgJq6KBwbrNxS2ZKH94JwsXa+va4QIY=";
   };
 
+  asdf-flv = callPackage ../asdf-flv { };
   alexandria = callPackage ../alexandria { };
 in
 
@@ -40,7 +34,7 @@ lispDerivation {
   lispLibs = [
     alexandria
     asdf-flv
-    trivial-backtrace
+    #trivial-backtrace
   ];
 
   lisps = [

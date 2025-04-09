@@ -27,8 +27,6 @@ lispDerivation {
 
   lisps = [
     sbcl
-    clisp
-    ecl
   ];
 
   runner = sbcl;
