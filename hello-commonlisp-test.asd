@@ -1,3 +1,8 @@
+(in-package :cl-user)
+(defpackage hello-commonlisp-asd
+  (:use :cl :asdf :uiop))
+(in-package :hello-commonlisp-asd)
+
 (defsystem "hello-commonlisp-test"
     :version "0.1.0"
     :author "haruki7049"

@@ -10,11 +10,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1744216066,
-        "narHash": "sha256-5Z282BP1v4t2q7/XNBrbm0vWVudDbvLN0ekYj1+Uqiw=",
+        "lastModified": 1744217514,
+        "narHash": "sha256-59jFovzCPAY7N5E5V9jcb5Y1cdIsI/0U5KEg+iW8XS4=",
         "owner": "haruki7049",
         "repo": "cl-asdf-setup.nix",
-        "rev": "d336773605b5238f87b27410a2abb097e81dfcd1",
+        "rev": "9d8e266d3b06800bd4a65b7e1a1287b6a2308033",
         "type": "github"
       },
       "original": {

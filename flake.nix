@@ -40,7 +40,9 @@
             ];
 
             lisps = [
+              pkgs.sbcl
               pkgs.ecl
+              pkgs.clisp
             ];
 
             doCheck = true;
@@ -66,10 +68,17 @@
             default = hello-commonlisp;
           };
 
-          devShells.default = pkgs.mkShell {
+          devShells.default = pkgs.mkShell rec {
             nativeBuildInputs = [
               pkgs.nil
+              pkgs.clisp
             ];
+
+            lispLibs = [
+              fiveam
+            ];
+
+            CL_SOURCE_REGISTRY = pkgs.makeCommonLispSourceRegistry lispLibs;
           };
         };
     };
