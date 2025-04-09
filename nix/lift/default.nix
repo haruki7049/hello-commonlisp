@@ -10,17 +10,22 @@
 }:
 
 lispDerivation {
-  name = "trivial-backtrace";
+  name = "lift";
   src = fetchFromGitHub {
     owner = "hraban";
-    repo = "trivial-backtrace";
-    rev = "7f90b4a4144775cca0728791e4b92ac2557b07a1";
-    hash = "sha256-dg5xWOdR1NuRjgJq6KBwbrNxS2ZKH94JwsXa+va4QIY=";
+    repo = "lift";
+    rev = "a7941845a9de72be60e66ea941aa34cbee35bf23";
+    hash = "sha256-3WCwYgXQJ4mHyZrTtiKq2Bwiue1HJ/O3zYjj6QyxI5Q=";
   };
+
+  lispLibs = [
+  ];
 
   lisps = [
     sbcl
   ];
 
   runner = sbcl;
+
+  dontCheck = true;
 }

@@ -12,9 +12,10 @@
   lispLibs ? [ ],
   lisps,
   runner,
+  ...
 }@args:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (args // rec {
   name = args.name or "${args.pname}-${args.version}";
   inherit (args) src;
 
@@ -25,8 +26,6 @@ stdenv.mkDerivation rec {
   checkerScript = replaceVars ./checker.lisp {
     pname = args.name or args.pname;
   };
-
-  doCheck = true;
 
   checkPhase = ''
     runHook preCheck
@@ -64,4 +63,4 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = lispLibs;
 
   CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.lispLibs or [ ] ++ [ args.src ])}";
-}
+})

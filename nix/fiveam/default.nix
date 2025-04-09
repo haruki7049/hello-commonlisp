@@ -11,13 +11,7 @@
 }:
 
 let
-  trivial-backtrace = fetchFromGitHub {
-    owner = "hraban";
-    repo = "trivial-backtrace";
-    rev = "7f90b4a4144775cca0728791e4b92ac2557b07a1";
-    hash = "sha256-dg5xWOdR1NuRjgJq6KBwbrNxS2ZKH94JwsXa+va4QIY=";
-  };
-
+  trivial-backtrace = callPackage ../trivial-backtrace { };
   asdf-flv = callPackage ../asdf-flv { };
   alexandria = callPackage ../alexandria { };
 in
@@ -34,7 +28,7 @@ lispDerivation {
   lispLibs = [
     alexandria
     asdf-flv
-    #trivial-backtrace
+    trivial-backtrace
   ];
 
   lisps = [
