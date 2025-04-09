@@ -22,7 +22,8 @@
         inputs.treefmt-nix.flakeModule
       ];
 
-      perSystem = { pkgs, lib, ... }:
+      perSystem =
+        { pkgs, lib, ... }:
         let
           lispDerivation = pkgs.callPackage ./nix/lispDerivation { };
           fiveam = pkgs.callPackage ./nix/fiveam { };
@@ -45,6 +46,11 @@
           };
         in
         {
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs.nixfmt.enable = true;
+          };
+
           packages = {
             inherit hello-commonlisp;
             default = hello-commonlisp;
