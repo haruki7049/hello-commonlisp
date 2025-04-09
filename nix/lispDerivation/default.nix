@@ -6,10 +6,10 @@
 
 {
   name ? null,
-  pname,
+  pname ? null,
   version ? null,
   src,
-  buildInputs ? [],
+  lispLibs ? [],
   lisps,
   runner,
 }@args:
@@ -61,7 +61,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  propagatedBuildInputs = buildInputs ++ [ runner ];
+  propagatedBuildInputs = lispLibs;
 
-  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.buildInputs)}:${args.src}";
+  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.lispLibs)}:${args.src}";
 }

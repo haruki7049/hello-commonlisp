@@ -11,11 +11,28 @@
 }:
 
 let
-  fiveam = fetchFromGitHub {
-    owner = "lispci";
-    repo = "fiveam";
-    rev = "e43d6c8e7da5a80d5c33e8ca018fb1619c5b0293";
-    hash = "sha256-0C4Mj5ulfnmvsG6d5cJmCcrDFw8heQHMgv8piKWryhg=";
+  fiveam = lispDerivation {
+    name = "fiveam";
+    src = fetchFromGitHub {
+      owner = "lispci";
+      repo = "fiveam";
+      rev = "e43d6c8e7da5a80d5c33e8ca018fb1619c5b0293";
+      hash = "sha256-0C4Mj5ulfnmvsG6d5cJmCcrDFw8heQHMgv8piKWryhg=";
+    };
+
+    lispLibs = [
+      alexandria
+      asdf-flv
+      trivial-backtrace
+    ];
+
+    lisps = [
+      sbcl
+      clisp
+      ecl
+    ];
+
+    runner = sbcl;
   };
 
   asdf-flv = fetchFromGitHub {
@@ -46,11 +63,8 @@ lispDerivation {
   version = "dev";
   src = lib.cleanSource ./.;
 
-  buildInputs = [
+  lispLibs = [
     fiveam
-    alexandria
-    asdf-flv
-    trivial-backtrace
   ];
 
   lisps = [
