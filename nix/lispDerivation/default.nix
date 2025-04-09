@@ -62,5 +62,5 @@ stdenv.mkDerivation (args // rec {
 
   propagatedBuildInputs = lispLibs;
 
-  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.lispLibs or [ ] ++ [ args.src ])}";
+  CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv.CL_SOURCE_REGISTRY}") args.lispLibs or [ ] ++ [ args.src ])}";
 })
