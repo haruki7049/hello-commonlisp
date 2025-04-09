@@ -21,6 +21,10 @@ stdenv.mkDerivation rec {
     pname = args.name or args.pname;
   };
 
+  checkerScript = replaceVars ./checker.lisp {
+    pname = args.name or args.pname;
+  };
+
   buildPhase = ''
     runHook preBuild
 
@@ -28,6 +32,11 @@ stdenv.mkDerivation rec {
 
     ${lib.strings.concatStringsSep "\n" (
       builtins.map (drv: "cat '${builderScript}' | ${lib.getExe drv}") lispImpls
+    )}
+
+    # TODO: This checking part should be in checkPhase
+    ${lib.strings.concatStringsSep "\n" (
+      builtins.map (drv: "cat '${checkerScript}' | ${lib.getExe drv}") lispImpls
     )}
 
     runHook postBuild
