@@ -60,7 +60,5 @@ stdenv.mkDerivation (args // rec {
     runHook postInstall
   '';
 
-  propagatedBuildInputs = lispLibs;
-
   CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv.CL_SOURCE_REGISTRY}") args.lispLibs or [ ] ++ [ args.src ])}";
 })
