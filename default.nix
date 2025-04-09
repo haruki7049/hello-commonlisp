@@ -53,7 +53,9 @@ lispDerivation {
     trivial-backtrace
   ];
 
-  lispImpls = [
+  lisps = [
     sbcl
   ];
+
+  runner = sbcl;
 }

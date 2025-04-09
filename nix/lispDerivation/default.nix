@@ -10,7 +10,8 @@
   version ? null,
   src,
   buildInputs ? [],
-  lispImpls,
+  lisps,
+  runner,
 }@args:
 
 stdenv.mkDerivation rec {
@@ -33,7 +34,7 @@ stdenv.mkDerivation rec {
     export HOME=$TMPDIR
 
     ${lib.strings.concatStringsSep "\n" (
-      builtins.map (drv: "cat '${checkerScript}' | ${lib.getExe drv}") lispImpls
+      builtins.map (drv: "cat '${checkerScript}' | ${lib.getExe drv}") lisps
     )}
 
     runHook postCheck
@@ -45,7 +46,7 @@ stdenv.mkDerivation rec {
     export HOME=$TMPDIR
 
     ${lib.strings.concatStringsSep "\n" (
-      builtins.map (drv: "cat '${builderScript}' | ${lib.getExe drv}") lispImpls
+      builtins.map (drv: "cat '${builderScript}' | ${lib.getExe drv}") lisps
     )}
 
     runHook postBuild
@@ -59,6 +60,8 @@ stdenv.mkDerivation rec {
 
     runHook postInstall
   '';
+
+  propagatedBuildInputs = buildInputs ++ [ runner ];
 
   CL_SOURCE_REGISTRY = "${lib.strings.concatStringsSep ":" (builtins.map (drv: "${drv}") args.buildInputs)}:${args.src}";
 }
