@@ -37,5 +37,7 @@ lispDerivation {
     ecl
   ];
 
+  doCheck = true;
+
   runner = sbcl;
 }

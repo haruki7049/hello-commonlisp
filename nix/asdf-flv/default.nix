@@ -20,7 +20,11 @@ lispDerivation {
 
   lisps = [
     sbcl
+    ecl
+    clisp
   ];
+
+  doCheck = true;
 
   runner = sbcl;
 }

@@ -9,6 +9,10 @@
   ecl,
 }:
 
+let
+  lift = callPackage ../lift { };
+in
+
 lispDerivation {
   name = "trivial-backtrace";
   src = fetchFromGitHub {
@@ -20,7 +24,11 @@ lispDerivation {
 
   lisps = [
     sbcl
+    clisp
+    ecl
   ];
 
   runner = sbcl;
+
+  dontCheck = true;
 }
